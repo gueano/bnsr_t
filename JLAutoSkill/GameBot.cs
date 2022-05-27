@@ -72,7 +72,14 @@ namespace JLAutoSkill {
                     count++;
                 }
                 if (count == skill.points.Count) {
-                    this.skillQueue.Add(skill);
+                    var _count = skill.count <= 1 ? 1 : skill.count;
+                    if (skill.releaseRMB && this.isRightDown) {
+                        InputUtils.MouseRightUp();
+                        InputUtils.PressKey(skill.key, _count, 0);
+                        InputUtils.MouseRightDown();
+                    } else {
+                        InputUtils.PressKey(skill.key, _count, 0);
+                    }
                 }
             }
 
@@ -125,21 +132,29 @@ namespace JLAutoSkill {
 
             Task.Run(() => {
                 while (this.started) {
-                    if (this.isRightDown)
+                    if (this.isRightDown) {
                         this.doSkillThing();
-                    Thread.Sleep(10);
+                    } else {
+                        Thread.Sleep(10);
+                    }
                 }
             });
 
-            Task.Run(() => {
-                GameSkillConfigV2 skill;
-                while (this.started) {
-                    skill = this.skillQueue.Take();
-                    var count = (skill.count <= 1 ? 1 : skill.count) * 2;
-                    InputUtils.PressKey(skill.key, count, 0);
-                }
+            //Task.Run(() => {
+            //    GameSkillConfigV2 skill;
+            //    while (this.started) {
+            //        skill = this.skillQueue.Take();
+            //        var count = skill.count <= 1 ? 1 : skill.count;
+            //        if (skill.releaseRMB && this.isRightDown) {
+            //            InputUtils.MouseRightUp();
+            //            InputUtils.PressKey(skill.key, count, 0);
+            //            InputUtils.MouseRightDown();
+            //        } else {
+            //            InputUtils.PressKey(skill.key, count, 0);
+            //        }
+            //    }
 
-            });
+            //});
         }
 
         private void stop() {
@@ -197,6 +212,7 @@ namespace JLAutoSkill {
             public List<PointData> points { get; set; }
             public string key { get; set; }
             public int count { get; set; }
+            public bool releaseRMB { get; set; }
             //public int delay { get; set; }
 
             public override string ToString() {

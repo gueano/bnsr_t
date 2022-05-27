@@ -42,6 +42,7 @@ namespace JLAutoSkill {
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -158,6 +159,7 @@ namespace JLAutoSkill {
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.checkBox2);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.label2);
@@ -172,7 +174,7 @@ namespace JLAutoSkill {
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(90, 63);
+            this.button3.Location = new System.Drawing.Point(167, 59);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 8;
@@ -212,6 +214,16 @@ namespace JLAutoSkill {
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "按鍵：";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(40, 61);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(75, 21);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "放开右键";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -256,6 +268,7 @@ namespace JLAutoSkill {
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

@@ -62,7 +62,8 @@ namespace JLAutoSkill {
                         }
                     },
                     key = skill.key,
-                    count = skill.delay
+                    count = skill.delay,
+                    releaseRMB = false
                 };
 
                 gsc.Add(skillV2);
@@ -152,6 +153,7 @@ namespace JLAutoSkill {
             var skill = this.gsc[idx];
             this.textBox1.Text = skill.key == "\t" ? "!" : skill.key;
             this.textBox2.Text = skill.count.ToString();
+            this.checkBox2.Checked = skill.releaseRMB;
         }
 
         private void button3_Click(object sender, EventArgs e) {
@@ -163,6 +165,7 @@ namespace JLAutoSkill {
 
             var skill = this.gsc[idx];
             skill.key = this.textBox1.Text == "!" ? "\t" : this.textBox1.Text;
+            skill.releaseRMB = this.checkBox2.Checked;
             skill.count = Int32.Parse(this.textBox2.Text);
 
             this.listBox1.Items[idx] = skill.ToString();
